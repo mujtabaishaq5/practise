@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Under Construction</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, rgb(79, 74, 230), #3a3a9f);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+      transition: all 0.3s ease;
+    }
+
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #ffffff, #d1d1ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .icon {
+      font-size: 4.5rem;
+      margin: 25px 0;
+      animation: bounce 1.5s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    p {
+      font-size: 1.2em;
+      color: #e0e0ff;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    footer {
+      font-size: 0.85em;
+      color: #ccc;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 10px;
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        padding: 25px;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      .icon {
+        font-size: 3.5rem;
+      }
+
+      p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Under Construction</h1>
+    <div class="icon">🚧</div>
+    <p>We're working hard to bring you something amazing.<br>Please check back soon!</p>
+    <footer>&copy; 2025–2026 <strong>{Practise});)</strong></footer>
+  </div>
+</body>
+</html>

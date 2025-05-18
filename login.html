@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <title>{P});) Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #0f111a;
+      font-family: 'Fira Code', monospace, monospace;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      overflow: hidden;
+    }
+    /* The code background container */
+    .code-background {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      padding: 2rem;
+      pointer-events: none; /* So clicks go through */
+      font-size: 14px;
+      line-height: 1.4;
+      white-space: pre;
+      overflow: hidden;
+      color: #64ffda; /* default greenish */
+      user-select: none;
+      z-index: 0;
+    }
+    /* syntax colors */
+    .keyword { color: #ff7b72; }
+    .string { color: #c3e88d; }
+    .comment { color: #546e7a; font-style: italic; }
+    .function { color: #82aaff; }
+    .number { color: #f78c6c; }
+    .variable { color: #ffcb6b; }
+
+    /* The form container sits on top */
+    .form-container {
+      position: relative;
+      z-index: 1;
+      background: rgba(15, 17, 26, 0.9);
+      border: 1px solid #5c6bc0;
+      border-radius: 16px;
+      padding: 2rem 2.5rem;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 0 20px rgba(92, 107, 192, 0.5);
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- The literal code background behind the form -->
+  <pre class="code-background">
+<span class="keyword">try</span> {
+    <span class="keyword">new</span> <span class="function">Function</span>(<span class="variable">jsCode</span>);
+} <span class="keyword">catch</span> (<span class="variable">e</span>) {
+    <span class="variable">errors</span>.push(<span class="string">"JavaScript Error: "</span> + <span class="variable">e</span>.message);
+}
+
+<span class="comment">// CSS Error check</span>
+<span class="keyword">const</span> <span class="variable">cssCheck</span> = <span class="keyword">document</span>.createElement(<span class="string">'style'</span>);
+<span class="keyword">try</span> {
+    <span class="variable">cssCheck</span>.innerHTML = <span class="variable">cssCode</span>;
+    <span class="keyword">document</span>.head.appendChild(<span class="variable">cssCheck</span>);
+    <span class="keyword">document</span>.head.removeChild(<span class="variable">cssCheck</span>);
+} <span class="keyword">catch</span> (<span class="variable">e</span>) {
+    <span class="variable">errors</span>.push(<span class="string">"CSS Error: "</span> + <span class="variable">e</span>.message);
+}
+
+<span class="comment">// HTML Error check</span>
+<span class="keyword">const</span> <span class="variable">parser</span> = <span class="keyword">new</span> <span class="function">DOMParser</span>();
+<span class="keyword">const</span> <span class="variable">parsedDoc</span> = <span class="variable">parser</span>.parseFromString(<span class="variable">htmlCode</span>, <span class="string">"text/html"</span>);
+<span class="keyword">const</span> <span class="variable">htmlErrors</span> = <span class="variable">parsedDoc</span>.querySelectorAll(<span class="string">"parsererror"</span>);
+<span class="keyword">if</span> (<span class="variable">htmlErrors</span>.length &gt; <span class="number">0</span>) {
+    <span class="variable">errors</span>.push(<span class="string">"HTML Error: "</span> + <span class="variable">htmlErrors</span>[<span class="number">0</span>].textContent);
+}
+
+<span class="keyword">document</span>.getElementById(<span class="string">"errorDisplay"</span>).innerText = <span class="variable">errors</span>.length &gt; <span class="number">0</span> ? <span class="variable">errors</span>.join(<span class="string">'\n'</span>) : <span class="string">'No errors.'</span>;
+
+<span class="keyword">document</span>.getElementById(<span class="string">"preview"</span>).srcdoc = `
+    \${htmlCode}
+    <style>\${cssCode}</style>
+    <script>\${jsCode}</script>
+`;
+
+<span class="comment">// Save to localStorage</span>
+<span class="keyword">localStorage</span>.setItem(<span class="string">"code-html"</span>, <span class="variable">htmlCode</span>);
+<span class="keyword">localStorage</span>.setItem(<span class="string">"code-css"</span>, <span class="variable">cssCode</span>);
+<span class="keyword">localStorage</span>.setItem(<span class="string">"code-js"</span>, <span class="variable">jsCode</span>);
+}
+
+<span class="keyword">Object</span>.values(<span class="variable">editors</span>).forEach(<span class="variable">editor</span> =&gt; {
+    <span class="variable">editor</span>.on(<span class="string">"change"</span>, <span class="variable">updatePreview</span>);
+});
+<span class="keyword">Object</span>.values(<span class="variable">editors</span>).forEach(<span class="variable">editor</span> =&gt; {
+    <span class="variable">editor</span>.on(<span class="string">"keyup"</span>, <span class="keyword">function</span>(<span class="variable">cm</span>, <span class="variable">event</span>) {
+        <span class="keyword">if</span> (!<span class="variable">cm</span>.state.completionActive && !<span class="variable">event</span>.ctrlKey && !<span class="variable">event</span>.metaKey && !<span class="variable">event</span>.altKey) {
+            <span class="function">CodeMirror</span>.commands.autocomplete(<span class="variable">cm</span>, <span class="string">null</span>, { completeSingle: <span class="keyword">false</span> });
+        }
+    });
+});
+  </pre>
+
+  <!-- The login form container -->
+  <div class="form-container text-white">
+    <h2 class="text-3xl font-bold text-center text-indigo-400 mb-6">Log In</h2>
+
+    <form id="loginForm" class="space-y-5">
+      <div>
+        <label for="email" class="block text-indigo-300 font-semibold mb-1">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          required
+          class="w-full px-4 py-2 rounded-lg bg-gray-900 text-indigo-200 border border-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+        />
+      </div>
+
+      <div>
+        <label for="password" class="block text-indigo-300 font-semibold mb-1">Password</label>
+        <input
+          type="password"
+          id="password"
+          required
+          class="w-full px-4 py-2 rounded-lg bg-gray-900 text-indigo-200 border border-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+        />
+        <div class="mt-2">
+          <label class="inline-flex items-center text-indigo-400">
+            <input type="checkbox" id="togglePassword" class="form-checkbox text-indigo-500 mr-2" />
+            <span class="text-sm">Show Password</span>
+          </label>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300"
+      >
+        Log In
+      </button>
+    </form>
+
+    <p class="text-center text-sm text-indigo-400 mt-6">
+      Don't have an account? 
+      <a href="signup.html" class="text-indigo-500 hover:underline">Sign Up</a>
+    </p>
+
+    <p class="text-center text-xs text-indigo-500 mt-8">
+      &copy; 2025-2026 <strong>{Practise});)</strong>
+    </p>
+  </div>
+
+  <script>
+    // Initialize Firebase (copy your config)
+    const firebaseConfig = {
+      apiKey: "AIzaSyDq_q5Ksj4ZRvmAdbz217wjOUw3YbUZFXA",
+      authDomain: "practise-f5da6.firebaseapp.com",
+      projectId: "practise-f5da6",
+      storageBucket: "practise-f5da6.appspot.com",
+      messagingSenderId: "583890704681",
+      appId: "1:583890704681:web:2ce3a211215a23b96ebf38",
+      measurementId: "G-GVNT25CC4N"
+    };
+
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Show/hide password toggle
+    document.getElementById("togglePassword").addEventListener("change", function () {
+      const passwordField = document.getElementById("password");
+      passwordField.type = this.checked ? "text" : "password";
+    });
+
+    // Login form submit
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          // Login success: redirect to main.html
+          window.location.href = "main.html";
+        })
+        .catch((error) => {
+          alert("Login error: " + error.message);
+        });
+    });
+     </script>
+
+</body>
+</html>
