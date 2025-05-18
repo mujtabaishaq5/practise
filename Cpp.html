@@ -95,13 +95,15 @@ int main() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             language: "cpp",
-            version: "17.0.0",
+            version: "10.2.0",
             files: [{ name: "main.cpp", content: code }]
           })
         });
 
         const result = await res.json();
-        output.textContent = result.run.output || "No output.";
+        const outputText = result?.run?.output || result?.message || "No output.";
+            output.textContent = outputText;
+
       } catch (err) {
         output.textContent = "Error: " + err.message;
       }
