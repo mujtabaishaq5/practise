@@ -1,103 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>{Practise});)</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+  <link rel="icon" type="image/png" href="">
+<style>
+/* Optional fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+.fade-in-up {
+  animation: fadeIn 0.6s ease-out;
+}
 
-    body {
-      background: linear-gradient(135deg, rgb(79, 74, 230), #3a3a9f);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      padding: 20px;
-      overflow: hidden;
-    }
+/* Blur effect when overlay is visible */
+.blur-app {
+  filter: blur(5px);
+  pointer-events: none;
+  user-select: none;
+}
 
-    .container {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      max-width: 500px;
-      transition: all 0.3s ease;
-    }
 
-    h1 {
-      font-size: 2.8em;
-      margin-bottom: 10px;
-      background: linear-gradient(90deg, #ffffff, #d1d1ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+</style>
+  </head>
+<body class="bg-gray-900 text-white min-h-screen p-6">
 
-    .icon {
-      font-size: 4.5rem;
-      margin: 25px 0;
-      animation: bounce 1.5s infinite;
-    }
+  <!-- Main App UI (Always visible but blurred if overlay is active) -->
+  <div id="mainApp" class="transition-all duration-500">
+    <!-- App starts here -->
 
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-12px);
-      }
-    }
 
-    p {
-      font-size: 1.2em;
-      color: #e0e0ff;
-      margin-bottom: 30px;
-      line-height: 1.5;
-    }
 
-    footer {
-      font-size: 0.85em;
-      color: #ccc;
-      margin-top: 30px;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding-top: 10px;
-    }
-
-    @media (max-width: 500px) {
-      .container {
-        padding: 25px;
-      }
-
-      h1 {
-        font-size: 2em;
-      }
-
-      .icon {
-        font-size: 3.5rem;
-      }
-
-      p {
-        font-size: 1em;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Under Construction</h1>
-    <div class="icon">🚧</div>
-    <p>We're working hard to bring you something amazing.<br>Please check back soon!</p>
-    <footer>&copy; 2025–2026 <strong>{Practise});)</strong></footer>
+<!-- App ends here -->
   </div>
-</body>
+
+  <!-- Maintenance Overlay -->
+  <div id="maintenanceOverlay" class="fixed inset-0 z-50 bg-gray-900 bg-opacity-90 backdrop-blur-sm flex items-center justify-center pointer-events-auto">
+    <div class="max-w-xl w-full bg-gray-800 p-8 rounded-2xl shadow-2xl text-center border border-gray-700 fade-in-up">
+      <svg class="w-16 h-16 mx-auto text-yellow-400 mb-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h14a2 2 0 012 2v11H3V5z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M2 17h20a1 1 0 011 1v1a2 2 0 01-2 2H3a2 2 0 01-2-2v-1a1 1 0 011-1z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10 9l-2 2 2 2M14 9l2 2-2 2" />
+        </svg>
+
+      <h1 class="text-3xl font-bold mb-4">Coming soon!</h1>
+      <p class="text-gray-300 text-lg mb-6">
+        <i>{Practise});) is currently under construction.</i><br/>
+       <i> Thank you for your patience.</i>
+      </p>
+      <div class="text-sm text-gray-500 mb-2">— <strong>{Practise});)</strong> Team</div>
+      <div class="text-xs text-gray-500">&copy; 2025-2026 | All rights reserved</div>
+    </div>
+  </div>
+    <!--script>
+  // Blur the app when overlay is shown
+  document.getElementById("mainApp").classList.add("blur-app");
+
+  // Auto-hide maintenance after 5 seconds
+  setTimeout(() => {
+    document.getElementById("maintenanceOverlay").classList.add("hidden");
+    document.getElementById("mainApp").classList.remove("blur-app");
+  }, 5000);
+</script-->
+
+  </body>
 </html>
