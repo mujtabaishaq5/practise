@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>{Practise});) Python </title>
-   <link rel="icon" type="image/png" href="logo.png">
+  <title>{Practise});) C#</title>
+  <link rel="icon" type="image/png" href="logo.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
 @keyframes bounceIn {
@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/monokai.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
 
   <!-- Autocomplete Addons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/hint/show-hint.min.css" />
@@ -38,29 +38,34 @@
 </head>
 
 <body class="bg-gray-900 text-white min-h-screen p-6">
-  <h1 class="text-3xl font-bold text-center mb-6">Python</h1>
+  <h1 class="text-3xl font-bold text-center mb-6">C#</h1>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     <!-- Editor -->
     <div class="bg-gray-800 p-4 rounded-lg border border-gray-700 shadow-lg">
-      <textarea id="code"># Write Python code
-print("Hello, Python!")</textarea>
+      <textarea id="code">// Write C# code
+using System;
+
+class Program {
+    static void Main() {
+        Console.WriteLine("Hello, C#!");
+    }
+}</textarea>
       <div class="flex gap-2 mt-4">
         <button onclick="runCode()" class="bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded">Run</button>
         <button onclick="getGeminiSuggestion()" class="bg-yellow-600 hover:bg-orange-500 px-4 py-2 rounded">AI Suggest</button>
       </div>
     </div>
-    
+
+    <!-- AI Feature Unavailable Popup -->
     <div id="successMessage" class="fixed top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-indigo-600 text-white px-6 py-4 rounded-xl shadow-xl hidden z-50">
-  <div class="flex items-center space-x-4">
-    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M12 5a7 7 0 100 14 7 7 0 000-14z" />
-    </svg>
-    <span class="font-semibold">Oops!!! Feature is not yet available.</span>
-  </div>
-</div>
-
-
+      <div class="flex items-center space-x-4">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M12 5a7 7 0 100 14 7 7 0 000-14z" />
+        </svg>
+        <span class="font-semibold">Oops!!! Feature is not yet available.</span>
+      </div>
+    </div>
 
     <!-- Output -->
     <div class="bg-black p-4 rounded-lg border border-gray-700 shadow-lg">
@@ -68,14 +73,15 @@ print("Hello, Python!")</textarea>
       <pre id="output" class="text-green-400 whitespace-pre-wrap h-[400px] overflow-auto"></pre>
     </div>
   </div>
+
   <footer class="text-center text-xs text-indigo-500 mt-8">
-      &copy; 2025-2026 <strong>{Practise});)</strong>
+    &copy; 2025-2026 <strong>{Practise});)</strong>
   </footer>
 
   <script>
     const editor = CodeMirror.fromTextArea(document.getElementById("code"), {
       lineNumbers: true,
-      mode: "python",
+      mode: "text/x-csharp",
       theme: "monokai",
       matchBrackets: true,
       extraKeys: { "Ctrl-Space": "autocomplete" },
@@ -91,42 +97,38 @@ print("Hello, Python!")</textarea>
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            language: "python",
-            version: "3.10.0",
-            files: [{ name: "main.py", content: code }]
+            language: "csharp",
+            version: "6.12.0",
+            files: [{ name: "main.cs", content: code }]
           })
         });
 
         const result = await res.json();
-        output.textContent = result.run.output || "No output.";
+        const outputText = result?.run?.output || result?.message || "No output.";
+        output.textContent = outputText;
+
       } catch (err) {
         output.textContent = "Error: " + err.message;
       }
     }
-    
+
     function featureUnavail(){
-      
+      const msg = document.getElementById("successMessage");
+      const sound = document.getElementById("notifySound");
 
-  const msg = document.getElementById("successMessage");
-  const sound = document.getElementById("notifySound");
+      msg.classList.add("show");
+      msg.classList.remove("hidden");
 
-  msg.classList.add("show");
-  msg.classList.remove("hidden");
+      // Play sound
+      sound.currentTime = 0;
+      sound.play();
 
-  // Play sound
-  sound.currentTime = 0;
-  sound.play();
-
-  // Auto-hide after 3 seconds
-  setTimeout(() => {
-    msg.classList.add("hidden");
-    msg.classList.remove("show");
-  }, 3000);
-
-    
+      // Auto-hide after 3 seconds
+      setTimeout(() => {
+        msg.classList.add("hidden");
+        msg.classList.remove("show");
+      }, 3000);
     }
-    
-    // function for AI
 
     async function getGeminiSuggestion() {
   const code = editor.getValue();
@@ -140,7 +142,7 @@ print("Hello, Python!")</textarea>
         contents: [
           {
             parts: [
-              { text: `Continue this Python code:\n\n${code}` }
+              { text: `Write the C# code as asked or complete the code:\n\n${code}` }
             ]
           }
         ],
@@ -153,7 +155,7 @@ print("Hello, Python!")</textarea>
     if (!response.ok) {
       const errorData = await response.json();
       const errorMessage = errorData.error?.message || `${response.status} ${response.statusText}`;
-      throw new Error(`Gemini API error: ${errorMessage}`);
+      throw new Error(`AI error: ${errorMessage}`);
     }
 
     const result = await response.json();
@@ -161,45 +163,10 @@ print("Hello, Python!")</textarea>
     editor.replaceSelection("\n" + suggestion);
 
   } catch (error) {
-    alert("Failed to get Gemini suggestion: " + error.message);
+    alert("Failed to get AI suggestion: Backend Error:  " + error.message);
   }
 }
-
-
-   async function getAISuggestion() {
-  const code = editor.getValue();
-  try {
-    const response = await fetch("https://api.openai.com/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "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"  // Replace with your key
-      },
-      body: JSON.stringify({
-        model: "gpt-3.5-turbo",
-        messages: [
-          { role: "system", content: "You are a Python coding assistant." },
-          { role: "user", content: `Continue this Python code:\n\n${code}` }
-        ]
-      })
-    });
-
-    if (!response.ok) {
-      throw new Error(`OpenAI API error: ${response.status} ${response.statusText}`);
-    }
-
-    const result = await response.json();
-    const suggestion = result.choices?.[0]?.message?.content || "No suggestion.";
-    editor.replaceSelection("\n" + suggestion);
-  } catch (error) {
-    alert("Failed to get AI suggestion: " + error.message);
-  }
-}
-
-
   </script>
   <audio id="notifySound" src="https://assets.mixkit.co/sfx/preview/mixkit-interface-hint-notification-911.mp3" preload="auto"></audio>
-
-
 </body>
 </html>

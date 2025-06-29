@@ -6,6 +6,7 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
     <title>{P});) Signup</title>
+     <link rel="icon" type="image/png" href="logo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       body {
@@ -144,58 +145,11 @@
     </p>
   </div>
 
-    <script>
+  <!--sign up logic here -->
 
-      // <!-- Replace your current Firebase script with this -->
-     
-  // Your Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyDq_q5Ksj4ZRvmAdbz217wjOUw3YbUZFXA",
-    authDomain: "practise-f5da6.firebaseapp.com",
-    projectId: "practise-f5da6",
-    storageBucket: "practise-f5da6.appspot.com",
-    messagingSenderId: "583890704681",
-    appId: "1:583890704681:web:2ce3a211215a23b96ebf38",
-    measurementId: "G-GVNT25CC4N"
-  };
+<script src="signup.js" defer></script>
+    <!-- Toast Message Container -->
+<div id="toastMessage" class="fixed top-5 right-5 px-4 py-3 rounded shadow-lg hidden text-white text-sm z-50"></div>
 
-  // Initialize Firebase
-  const app = firebase.initializeApp(firebaseConfig);
- // const db = firebase.firestore();
-
-  const auth = firebase.auth();
-     // Show/hide password toggle
-    document.getElementById("togglePassword").addEventListener("change", function () {
-      const passwordField = document.getElementById("password");
-      passwordField.type = this.checked ? "text" : "password";
-    });
-   
-
-    document.getElementById("signupForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
-  firebase.auth().createUserWithEmailAndPassword(email, password)
-    .then((userCredential) => {
-      // Show success message
-      document.getElementById("successMessage").classList.remove("hidden");
-
-      // Optionally redirect after a delay
-      setTimeout(() => {
-        window.location.href = "login.html";
-      }, 2000);
-    })
-    .catch((error) => {
-      alert("Error: " + error.message);
-    });
-});
-
-
-    
-
-   
-    </script>
   </body>
 </html>

@@ -1,0 +1,215 @@
+  html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Fira Code', monospace;
+    }
+    .CodeMirror {
+      height: 100%;
+      border-radius: 0.5rem;
+      overflow: hidden;
+    }
+:root {
+  --bg: #f4f4f4;
+  --text: #000;
+}
+
+body.dark {
+  --bg: #121212;
+  --text: #f0f0f0;
+}
+
+body {
+  margin: 0;
+  font-family: monospace;
+  background-color: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  background: #333;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tabs {
+  display: flex;
+  background: #444;
+}
+/*
+
+.tabs button {
+  flex: 1;
+  padding: 10px;
+  background: #444;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.tabs button.active {
+  background: #666;
+}
+*/
+.tab-button {
+  border-bottom: 3px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.tab-button.active {
+  background-color: #4f46e5; /* Tailwind's indigo-600 */
+   border-bottom: 3px solid #d4af37; 
+  font-weight: bold;
+  box-shadow: inset 0 -2px 0 0 white;
+}
+
+
+main {
+  display: flex;
+  flex: 1;
+}
+
+#editor {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.editor-area {
+  display: none;
+  flex: 1;
+  
+}
+
+.editor-area.active {
+  display: block;
+}
+
+#preview {
+  width: 50%;
+  border: none;
+  background: white;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  padding: 5px 10px;
+}
+  /* Make the editor and preview stack on small screens */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+
+  #editor,
+  #preview {
+    width: 100%;
+    height: 50vh;
+  }
+
+  .CodeMirror {
+    height: 100%;
+  }
+  /* Add to your CSS */
+   .animate-spin {
+  animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+  }
+.hidden {
+  display: none;
+}
+
+  .tabs button {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .buttons {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  /* AI Suggestion Styling */
+.CodeMirror-hint.ai-tag {
+  color: #569CD6;
+  border-left: 3px solid #569CD6;
+  padding-left: 5px;
+}
+
+.CodeMirror-hint.ai-attribute {
+  color: #9CDCFE;
+  border-left: 3px solid #9CDCFE;
+  padding-left: 5px;
+}
+
+.CodeMirror-hint.ai-property {
+  color: #DCDCAA;
+  border-left: 3px solid #DCDCAA;
+  padding-left: 5px;
+}
+
+.CodeMirror-hint.ai-value {
+  color: #CE9178;
+  border-left: 3px solid #CE9178;
+  padding-left: 5px;
+}
+
+.CodeMirror-hint.ai-method {
+  color: #D7BA7D;
+  border-left: 3px solid #D7BA7D;
+  padding-left: 5px;
+}
+
+.CodeMirror-hint.ai-snippet {
+  color: #4EC9B0;
+  border-left: 3px solid #4EC9B0;
+  padding-left: 5px;
+  white-space: pre;
+}
+
+.CodeMirror-hint-active {
+  background: #264F78;
+}
+
+.CodeMirror-hint-active.ai-tag,
+.CodeMirror-hint-active.ai-attribute,
+.CodeMirror-hint-active.ai-property,
+.CodeMirror-hint-active.ai-value,
+.CodeMirror-hint-active.ai-method,
+.CodeMirror-hint-active.ai-snippet {
+  color: white !important;
+}
+
+
+}
+/* Add to your CSS */
+.CodeMirror-hint-loading {
+  color: #999 !important;
+  font-style: italic;
+}
+
+.CodeMirror-hint-loading:after {
+  content: '...';
+  animation: dots 1.5s steps(5, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% { content: '.'; }
+  40% { content: '..'; }
+  60%, 100% { content: '...'; }
+}

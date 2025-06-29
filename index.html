@@ -1,939 +1,103 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>{Practise});)</title>
-  <link rel="icon" type="image/png" href="">
-<style>
-/* Optional fade-in */
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-.fade-in-up {
-  animation: fadeIn 0.6s ease-out;
-}
-
-/* Blur effect when overlay is visible */
-.blur-app {
-  filter: blur(5px);
-  pointer-events: none;
-  user-select: none;
-}
-
-
-</style>
-  </head>
-<body class="bg-gray-900 text-white min-h-screen p-6">
-
-  <!-- Main App UI (Always visible but blurred if overlay is active) -->
-  <div id="mainApp" class="transition-all duration-500">
-    <!-- App starts here -->
-<!DOCTYPE html>
-<!--MUJTABA ISHAQ ALL RIGHTS RESERVED-->
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{Practise});)</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-
-<!-- CodeMirror CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/monokai.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/material.min.css">
-<link rel="stylesheet" href="https://codemirror.net/5/theme/material-darker.css">
-<link rel="stylesheet" href="https://codemirror.net/5/theme/the-matrix.css">
-<link rel="stylesheet" href="https://codemirror.net/5/theme/midnight.css">
-<link rel="stylesheet" href="https://codemirror.net/5/theme/3024-night.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/darcula.min.css">
-<!-- Firebase App (the core Firebase SDK) -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-
-<!-- Add Firestore SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-
-
-
-
-
-
-
-<!-- Autocomplete addon scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/html-hint.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/css-hint.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/javascript-hint.min.js"></script>
-
-<!-- Hint CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.css">
-
-<!-- CodeMirror Hint CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.css">
-
-<!-- CodeMirror Hint JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/html-hint.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/css-hint.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/javascript-hint.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/anyword-hint.min.js"></script>
-
-<script src="https://unpkg.com/emmet-codemirror/dist/emmet.min.js"></script>
-<!-- Add this with your other CodeMirror scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
-
-<!-- CodeMirror scripts copilot -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/show-hint.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/anyword-hint.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/javascript-hint.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/html-hint.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/hint/css-hint.min.js"></script>
-
-
-
-<style>
-   html, body {
-      height: 100%;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Under Construction</title>
+  <style>
+    * {
       margin: 0;
-      font-family: 'Fira Code', monospace;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    .CodeMirror {
-      height: 100%;
-      border-radius: 0.5rem;
+
+    body {
+      background: linear-gradient(135deg, rgb(79, 74, 230), #3a3a9f);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
       overflow: hidden;
     }
-:root {
-  --bg: #f4f4f4;
-  --text: #000;
-}
 
-body.dark {
-  --bg: #121212;
-  --text: #f0f0f0;
-}
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+      transition: all 0.3s ease;
+    }
 
-body {
-  margin: 0;
-  font-family: monospace;
-  background-color: var(--bg);
-  color: var(--text);
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-}
+    h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+      background: linear-gradient(90deg, #ffffff, #d1d1ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-header {
-  background: #333;
-  color: white;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+    .icon {
+      font-size: 4.5rem;
+      margin: 25px 0;
+      animation: bounce 1.5s infinite;
+    }
 
-.tabs {
-  display: flex;
-  background: #444;
-}
-/*
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-12px);
+      }
+    }
 
-.tabs button {
-  flex: 1;
-  padding: 10px;
-  background: #444;
-  border: none;
-  color: white;
-  cursor: pointer;
-}
+    p {
+      font-size: 1.2em;
+      color: #e0e0ff;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
 
-.tabs button.active {
-  background: #666;
-}
-*/
-.tab-button {
-  border-bottom: 3px solid transparent;
-  transition: border-color 0.3s ease;
-}
+    footer {
+      font-size: 0.85em;
+      color: #ccc;
+      margin-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 10px;
+    }
 
-.tab-button.active {
-  background-color: #4f46e5; /* Tailwind's indigo-600 */
-   border-bottom: 3px solid #d4af37; 
-  font-weight: bold;
-  box-shadow: inset 0 -2px 0 0 white;
-}
+    @media (max-width: 500px) {
+      .container {
+        padding: 25px;
+      }
 
+      h1 {
+        font-size: 2em;
+      }
 
-main {
-  display: flex;
-  flex: 1;
-}
+      .icon {
+        font-size: 3.5rem;
+      }
 
-#editor {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-}
-
-.editor-area {
-  display: none;
-  flex: 1;
-  
-}
-
-.editor-area.active {
-  display: block;
-}
-
-#preview {
-  width: 50%;
-  border: none;
-  background: white;
-}
-
-.buttons {
-  display: flex;
-  gap: 10px;
-  padding: 5px 10px;
-}
-  /* Make the editor and preview stack on small screens */
-@media (max-width: 768px) {
-  main {
-    flex-direction: column;
-  }
-
-  #editor,
-  #preview {
-    width: 100%;
-    height: 50vh;
-  }
-
-  .CodeMirror {
-    height: 100%;
-  }
-  /* Add to your CSS */
-   .animate-spin {
-  animation: spin 1s linear infinite;
-  }
-  @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-  }
-.hidden {
-  display: none;
-}
-
-  .tabs button {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-
-  .buttons {
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-
-  /* AI Suggestion Styling */
-.CodeMirror-hint.ai-tag {
-  color: #569CD6;
-  border-left: 3px solid #569CD6;
-  padding-left: 5px;
-}
-
-.CodeMirror-hint.ai-attribute {
-  color: #9CDCFE;
-  border-left: 3px solid #9CDCFE;
-  padding-left: 5px;
-}
-
-.CodeMirror-hint.ai-property {
-  color: #DCDCAA;
-  border-left: 3px solid #DCDCAA;
-  padding-left: 5px;
-}
-
-.CodeMirror-hint.ai-value {
-  color: #CE9178;
-  border-left: 3px solid #CE9178;
-  padding-left: 5px;
-}
-
-.CodeMirror-hint.ai-method {
-  color: #D7BA7D;
-  border-left: 3px solid #D7BA7D;
-  padding-left: 5px;
-}
-
-.CodeMirror-hint.ai-snippet {
-  color: #4EC9B0;
-  border-left: 3px solid #4EC9B0;
-  padding-left: 5px;
-  white-space: pre;
-}
-
-.CodeMirror-hint-active {
-  background: #264F78;
-}
-
-.CodeMirror-hint-active.ai-tag,
-.CodeMirror-hint-active.ai-attribute,
-.CodeMirror-hint-active.ai-property,
-.CodeMirror-hint-active.ai-value,
-.CodeMirror-hint-active.ai-method,
-.CodeMirror-hint-active.ai-snippet {
-  color: white !important;
-}
-
-
-}
-/* Add to your CSS */
-.CodeMirror-hint-loading {
-  color: #999 !important;
-  font-style: italic;
-}
-
-.CodeMirror-hint-loading:after {
-  content: '...';
-  animation: dots 1.5s steps(5, end) infinite;
-}
-
-@keyframes dots {
-  0%, 20% { content: '.'; }
-  40% { content: '..'; }
-  60%, 100% { content: '...'; }
-}
-
-</style>
+      p {
+        font-size: 1em;
+      }
+    }
+  </style>
 </head>
-
-<body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
-
-<header class="flex items-center justify-between bg-indigo-600 text-white p-4 shadow-md">
-  <div class="text-lg font-bold"><b>{Practise});)</b></div>
-
-  <!--Buttons-->
-  <div class="space-x-2">
-    <button onclick="clearEditors()" class="bg-indigo-800 hover:bg-indigo-700 px-3 py-1 rounded">Clear</button>
-    <button onclick="resetEditors()" class="bg-indigo-800 hover:bg-indigo-700 px-3 py-1 rounded">Reset</button>
-    <!--button onclick="toggleTheme()" class="bg-indigo-800 hover:bg-indigo-700 px-3 py-1 rounded">Toggle Dark Mode-->
-    <button onclick="openContactForm()" class="bg-indigo-800 hover:bg-indigo-700 px-3 py-1 rounded">Contact Us</button>
-    <button id="loginBtn" class="bg-indigo-800 hover:bg-indigo-700 px-3 py-1 rounded hidden">Log in</button>
-    <button id="logoutBtn" class="bg-indigo-800 hover:bg-indigo-700 px-3 py-1 rounded">Log out</button>
-
+<body>
+  <div class="container">
+    <h1>Under Construction</h1>
+    <div class="icon">🚧</div>
+    <p>We're working hard to bring you something amazing.<br>Please check back soon!</p>
+    <footer>&copy; 2025–2026 <strong>{Practise});)</strong></footer>
   </div>
-
-
-  <div id="italic" class="italic absolute left-1/2 transform -translate-x-1/2 text-center pl-6">
-
-
-
-</header>
-
-<!-- Contact Us Modal -->
-<div id="contactModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
-  <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6 relative">
-    <!-- Close Button -->
-    <button 
-      onclick="closeContactForm()" 
-      class="absolute top-4 right-4 text-black hover:text-yellow-500 text-2xl font-bold"
-      aria-label="Close modal"
-    >&times;</button>
-
-    <h2 class="text-2xl font-bold text-indigo-700 mb-4 border-b-4 border-yellow-400 pb-2">
-      Contact Us
-    </h2>
-
-    <form id="contactForm" class="space-y-4 text-black">
-      <input type="text" placeholder="Your Name" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400" />
-      <input type="email" placeholder="Your Email" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400" />
-      <textarea placeholder="Your Message" required rows="4" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-yellow-400"></textarea>
-      <!-- Add this to your contact modal, below the form buttons -->
-     <div id="formLoading" class="hidden text-center py-2">
-     <div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-white"></div>
-      <span class="ml-2">Sending...</span>
-      </div>
-      <div class="flex justify-end space-x-3">
-        <button type="button" onclick="closeContactForm()" class="px-4 py-2 border rounded-md text-black border-gray-400 hover:text-yellow-500 hover:border-yellow-400 transition">Cancel</button>
-        <button type="submit" class="bg-indigo-700 hover:bg-yellow-400 text-white px-6 py-2 rounded-md font-semibold transition">Send</button>
-      </div>
-    </form>
-  </div>
-</div>
-
-<div class="flex bg-indigo-700 text-white text-sm tabs">
-  <button onclick="switchTab(event, 'html')" class="flex-1 p-2 hover:bg-indigo-600 focus:outline-none tab-button active">HTML</button>
-  <button onclick="switchTab(event, 'css')" class="flex-1 p-2 hover:bg-indigo-600 focus:outline-none tab-button">CSS</button>
-  <button onclick="switchTab(event, 'js')" class="flex-1 p-2 hover:bg-indigo-600 focus:outline-none tab-button">JavaScript</button>
-  <button id="openJavapage" onclick="openJava();" class="flex-1 p-2 hover:bg-indigo-600 focus:outline-none tab-button">Java</button>
-  <button id="openPythonpage" onclick="openPython();" class="flex-1 p-2 hover:bg-indigo-600 focus:outline-none tab-button">Python</button>
-   <button id="openCpppage" onclick="openCpp();" class="flex-1 p-2 hover:bg-indigo-600 focus:outline-none tab-button">C++</button>
-
-</div>
-
-
-<main class="flex flex-col md:flex-row h-[calc(100vh-112px)]">
-  <div id="editor" class="w-full md:w-1/2 flex flex-col">
-    <div id="html" class="editor-area flex-1 active"></div>
-    <div id="css" class="editor-area flex-1 hidden"></div>
-    <div id="js" class="editor-area flex-1 hidden"></div>
-    <div id="java" class="editor-area flex-1 hidden" onclick=""></div>
-  </div>
-  <iframe id="preview" class="w-full md:w-1/2 border-t md:border-l md:border-t-0 border-gray-300 bg-white"></iframe>
-</main>
-
-
- <footer class="bg-gray-800 text-white text-sm p-2 overflow-auto max-h-24">
-    <div id="errorDisplay">No errors.</div>
-  </footer>
-
-<!-- CodeMirror JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closetag.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/htmlmixed/htmlmixed.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/xml/xml.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/css/css.min.js"></script>
-
-<!--Emmet suppor script-->
-<script src="https://cdn.jsdelivr.net/npm/emmet-codemirror@latest/dist/emmet-codemirror.min.js"></script>
-
-
-<script>
-
-// Enhanced editor configuration with AI-style completions
-let editors = {
-  html: CodeMirror(document.getElementById('html'), {
-    mode: 'htmlmixed',
-    theme: 'dracula',
-    lineNumbers: true,
-    autoCloseTags: true,
-    extraKeys: {
-      "Ctrl-Space": "autocomplete",
-      "Tab": function(cm) {
-        if (cm.state.completionActive) {
-          cm.state.completionActive.close();
-        }
-        CodeMirror.commands.autocomplete(cm, null, {completeSingle: false});
-      }
-    },
-    matchTags: { bothTags: true },
-    value: localStorage.getItem("code-html") || "<h1>Hello World</h1>",
-    hintOptions: {
-      completeSingle: false,
-      hint: generateHtmlSuggestions // Use the fixed function
-    }
-  }),
-  css: CodeMirror(document.getElementById('css'), {
-    mode: 'css',
-    theme: 'monokai',
-    lineNumbers: true,
-    extraKeys: {
-      "Ctrl-Space": "autocomplete",
-      "Tab": function(cm) {
-        if (cm.state.completionActive) {
-          cm.state.completionActive.close();
-        }
-        CodeMirror.commands.autocomplete(cm, null, {completeSingle: false});
-      }
-    },
-    value: localStorage.getItem("code-css") || "body { font-family: Arial; }",
-    hintOptions: {
-      completeSingle: false,
-      hint: generateCssSuggestions // Use the fixed function
-    }
-  }),
-  js: CodeMirror(document.getElementById('js'), {
-    mode: 'javascript',
-    theme: 'material-darker',
-    lineNumbers: true,
-    extraKeys: {
-      "Ctrl-Space": "autocomplete",
-      "Tab": function(cm) {
-        if (cm.state.completionActive) {
-          cm.state.completionActive.close();
-        }
-        CodeMirror.commands.autocomplete(cm, null, {completeSingle: false});
-      }
-    },
-    value: localStorage.getItem("code-js") || "console.log('Hello from JS')",
-    hintOptions: {
-      completeSingle: false,
-      hint: generateJsSuggestions // Use the fixed function
-    }
-  })
-};
-
-// AI autocompletion & suggestions
-
-// HTML Suggestions - updated parameters
-function generateHtmlSuggestions(cm, options) {
-  const cursor = cm.getCursor();
-  const token = cm.getTokenAt(cursor);
-  const line = cm.getLine(cursor.line);
-  const allLines = cm.getValue().split('\n');
-  
-  const commonTags = ['div', 'span', 'p', 'a', 'img', 'ul', 'li', 'h1', 'h2', 'h3'];
-  const commonAttributes = ['class', 'id', 'style', 'src', 'href', 'alt', 'title'];
-  
-  // If we're inside a tag
-  if (line.slice(0, cursor.ch).includes('<') && !line.slice(0, cursor.ch).includes('>')) {
-    // Attribute suggestions
-    if (token.string.match(/^\s*[\w-]*$/)) {
-      return commonAttributes.map(attr => ({
-        text: attr + '=""',
-        displayText: attr,
-        className: 'ai-attribute'
-      }));
-    }
-  }
-  
-  // Tag suggestions
-  if (token.string.match(/^<\/?[\w-]*$/)) {
-    return commonTags.map(tag => ({
-      text: token.string.startsWith('</') ? `/${tag}>` : `${tag}>`,
-      displayText: tag,
-      className: 'ai-tag'
-    }));
-  }
-  
-  // Default to anyword completion
-  return CodeMirror.hint.html(cm, options);
-}
-
-// Similar updates for CSS and JS hint functions
-function generateCssSuggestions(cm, options) {
-  const cursor = cm.getCursor();
-  const token = cm.getTokenAt(cursor);
-  const line = cm.getLine(cursor.line);
-  const allLines = cm.getValue().split('\n');
-  
-  const commonProperties = [
-    'color', 'background', 'font-size', 'margin', 'padding', 
-    'border', 'display', 'position', 'width', 'height'
-  ];
-  const commonValues = {
-    'color': ['red', 'blue', '#fff', 'rgb(0,0,0)', 'var(--primary)'],
-    'display': ['block', 'inline', 'flex', 'grid', 'none'],
-    'position': ['relative', 'absolute', 'fixed', 'sticky']
-  };
-  
-  // Property suggestions
-  if (line.includes(':') && !line.includes(';')) {
-    const prop = line.split(':')[0].trim();
-    if (commonValues[prop]) {
-      return commonValues[prop].map(val => ({
-        text: val + ';',
-        displayText: val,
-        className: 'ai-value'
-      }));
-    }
-  } else {
-    return commonProperties.map(prop => ({
-      text: prop + ': ',
-      displayText: prop,
-      className: 'ai-property'
-    }));
-  }
-  
-  return CodeMirror.hint.css(cm, options);
-}
-
-function generateJsSuggestions(cm, options) {
-  const cursor = cm.getCursor();
-  const token = cm.getTokenAt(cursor);
-  const line = cm.getLine(cursor.line);
-  const allLines = cm.getValue().split('\n');
-  
-  const commonMethods = [
-    'console.log', 'document.querySelector', 'addEventListener',
-    'setTimeout', 'fetch', 'map', 'filter', 'reduce'
-  ];
-  const commonSnippets = [
-    {
-      text: 'for (let i = 0; i < length; i++) {\n  \n}',
-      displayText: 'for loop',
-      className: 'ai-snippet'
-    },
-    {
-      text: 'function name(params) {\n  \n}',
-      displayText: 'function',
-      className: 'ai-snippet'
-    }
-  ];
-  
-  // Check if we're likely in a method chain
-  if (line.includes('.') && !token.string.includes('.')) {
-    return commonMethods.map(method => ({
-      text: method.replace(/^[^.]*\./, ''),
-      displayText: method,
-      className: 'ai-method'
-    }));
-  }
-  
-  // Check for snippet opportunities
-  if (token.string.trim().length === 0) {
-    return commonSnippets;
-  }
-  
-  return CodeMirror.hint.javascript(cm, options);
-}
-
-
-function updatePreview() {
-  const htmlCode = editors.html.getValue();
-  const cssCode = editors.css.getValue();
-  const jsCode = editors.js.getValue();
-  let errors = [];
-
-  // JS Error check
-  try {
-    new Function(jsCode);
-  } catch (e) {
-    errors.push("JavaScript Error: " + e.message);
-  }
-
-  // CSS Error check
-  const cssCheck = document.createElement('style');
-  try {
-    cssCheck.innerHTML = cssCode;
-    document.head.appendChild(cssCheck);
-    document.head.removeChild(cssCheck);
-  } catch (e) {
-    errors.push("CSS Error: " + e.message);
-  }
-
-  // HTML Error check
-  const parser = new DOMParser();
-  const parsedDoc = parser.parseFromString(htmlCode, "text/html");
-  const htmlErrors = parsedDoc.querySelectorAll("parsererror");
-  if (htmlErrors.length > 0) {
-    errors.push("HTML Error: " + htmlErrors[0].textContent);
-  }
-
-  document.getElementById("errorDisplay").innerText = errors.length > 0 ? errors.join('\n') : 'No errors.';
-
-  document.getElementById("preview").srcdoc = `
-    ${htmlCode}
-    <style>${cssCode}</style>
-    <script>${jsCode}<\/script>
-  `;
-
-  // Save to localStorage
-  localStorage.setItem("code-html", htmlCode);
-  localStorage.setItem("code-css", cssCode);
-  localStorage.setItem("code-js", jsCode);
-}
-
-Object.values(editors).forEach(editor => {
-  editor.on("change", updatePreview);
-});
-Object.values(editors).forEach(editor => {
-  editor.on("keyup", function(cm, event) {
-    if (!cm.state.completionActive && !event.ctrlKey && !event.metaKey && !event.altKey) {
-      CodeMirror.commands.autocomplete(cm, null, { completeSingle: false });
-    }
-  });
-});
-
-
-function switchTab(event, tab) {
-  document.querySelectorAll('.editor-area').forEach(el => el.classList.remove('active'));
-  document.getElementById(tab).classList.add('active');
-
-  document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
-
-  editors[tab].refresh();
-}
-
-
-
-function clearEditors() {
-  Object.values(editors).forEach(editor => editor.setValue(''));
-  updatePreview();
-}
-
-function resetEditors() {
-  editors.html.setValue("<h1>Hello world!</h1>");
-  editors.css.setValue("body { font-family: Arial; }");
-  editors.js.setValue("console.log('Welcome to {P});)')");
-  updatePreview();
-}
-// Function for java page
-function openJava(){
-  document.getElementById('openJavapage').addEventListener('click', () => {
-    window.location.href = "Java.html";
-  });
-}
-// Function for Python page
-function openPython(){
-  document.getElementById('openPythonpage').addEventListener('click', () => {
-    window.location.href = "python.html";
-  });
-}
-//Function for Cpp page
-
-function openCpp() {
-  document.getElementById('openCpppage').addEventListener('click', () => {
-    window.location.href = "Cpp.html";
-  });
-}
-
-
-
-
-window.onload = () => {
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-  }
-  updatePreview();
-  emmetCodeMirror(editors.html); //emmet code mirror
-  setupAutocomplete();
-};
-    //autosave in typing
-  let saveTimeout;
-/*function debounceSave() {
-  clearTimeout(saveTimeout);
-  saveTimeout = setTimeout(updatePreview, 500); // waits 500ms after last keystroke
-}*/
-  function setupAutocomplete() {
-  const debouncedAutocomplete = debounce(function(cm) {
-    if (!cm.state.completionActive) {
-      CodeMirror.commands.autocomplete(cm, null, {completeSingle: false});
-    }
-  }, 300);
-
-  // Set up keyup handlers for each editor
-  editors.html.on("keyup", function(cm, event) {
-    if (!event.ctrlKey && !event.metaKey && !event.altKey && event.key.length === 1) {
-      debouncedAutocomplete(cm);
-    }
-  });
-  
-  editors.css.on("keyup", function(cm, event) {
-    if (!event.ctrlKey && !event.metaKey && !event.altKey && event.key.length === 1) {
-      debouncedAutocomplete(cm);
-    }
-  });
-  
-  editors.js.on("keyup", function(cm, event) {
-    if (!event.ctrlKey && !event.metaKey && !event.altKey && event.key.length === 1) {
-      debouncedAutocomplete(cm);
-    }
-  });
-}
-
-// Update your editor onKeyUp events
-Object.values(editors).forEach(editor => {
-  editor.on("keyup", debounce(function(cm, event) {
-    if (!cm.state.completionActive && 
-        !event.ctrlKey && 
-        !event.metaKey && 
-        !event.altKey && 
-        event.key.length === 1) { // Only for character keys
-      CodeMirror.commands.autocomplete(cm, null, {completeSingle: false});
-    }
-  }, 300));
-});
-//htmlEditor.on("change", debounceSave);
-//cssEditor.on("change", debounceSave);
-//jsEditor.on("change", debounceSave); 
-
-
-function openContactForm() {
-  document.getElementById('contactModal').classList.remove('hidden');
-}
-
-function closeContactForm() {
-  document.getElementById('contactModal').classList.add('hidden');
-}
-
-// Handle form submission
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-  event.preventDefault();
-  alert('Thanks for contacting us! We will get back to you soon.');
-  closeContactForm();
-  // Add backend submission logic here if needed
-});
-function openContactForm() {
-  document.getElementById('contactModal').classList.remove('hidden');
-}
-
-function closeContactForm() {
-  document.getElementById('contactModal').classList.add('hidden');
-}
-
-// Handle form submission
-// Update the submit handler to show loading state
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-  event.preventDefault();
-  
-  if (!validateForm()) return;
-  
-  const loading = document.getElementById('formLoading');
-  const submitBtn = this.querySelector('button[type="submit"]');
-  
-  // Show loading, disable submit button
-  loading.classList.remove('hidden');
-  submitBtn.disabled = true;
-  
-  // Get form values
-  const name = this.querySelector('input[type="text"]').value;
-  const email = this.querySelector('input[type="email"]').value;
-  const message = this.querySelector('textarea').value;
-  
-  db.collection("contacts").add({
-    name: name,
-    email: email,
-    message: message,
-    timestamp: firebase.firestore.FieldValue.serverTimestamp()
-  })
-  .then(() => {
-    alert('Thank you for contacting us! We will get back to you soon.');
-    closeContactForm();
-    this.reset();
-  })
-  .catch((error) => {
-    console.error("Error adding document: ", error);
-    alert('There was an error submitting your message. Please try again later.');
-  })
-  .finally(() => {
-    loading.classList.add('hidden');
-    submitBtn.disabled = false;
-  });
-});
-
-
-document.querySelectorAll('.tab-button').forEach(button => {
-  button.addEventListener('click', function () {
-    const tab = this.getAttribute('data-tab');
-
-    // Hide all editors
-    document.querySelectorAll('.editor').forEach(el => el.classList.add('hidden'));
-
-    // Show the selected editor
-    document.getElementById(`${tab}-editor`).classList.remove('hidden');
-
-    // Remove active class from all buttons
-    document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-
-    // Add active class to clicked button
-    this.classList.add('active');
-  });
-});
-
-
-
-</script>
-<!-- my current Firebase script  -->
-<script>
-  // Your Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyDq_q5Ksj4ZRvmAdbz217wjOUw3YbUZFXA",
-    authDomain: "practise-f5da6.firebaseapp.com",
-    projectId: "practise-f5da6",
-    storageBucket: "practise-f5da6.appspot.com",
-    messagingSenderId: "583890704681",
-    appId: "1:583890704681:web:2ce3a211215a23b96ebf38",
-    measurementId: "G-GVNT25CC4N"
-  };
-
-  // Initialize Firebase
-  const app = firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-
-  const auth = firebase.auth();  // Make sure you initialized Firebase Auth already
-
-
-
-  
-
-
-</script>
-
-<script>
-  auth.onAuthStateChanged(user => {
-    const loginBtn = document.getElementById('loginBtn');
-    const logoutBtn = document.getElementById('logoutBtn');
-    const italic = document.getElementById('italic');
-
-    if (user) {
-      // Show email and logout button
-      italic.textContent = `Logged in as: ${user.email}`;
-      loginBtn.classList.add('hidden');
-      logoutBtn.classList.remove('hidden');
-    } else {
-      // Show login button and message
-      italic.textContent = 'Please log in to continue';
-      logoutBtn.classList.add('hidden');
-      loginBtn.classList.remove('hidden');
-    }
-  });
-
-  document.getElementById('logoutBtn').addEventListener('click', () => {
-    firebase.auth().signOut().then(() => {
-      alert('You are logging out!');
-      window.location.href = "login.html"; // Change path if needed
-    }).catch((error) => {
-      console.error('Logout Error:', error);
-      alert('Errors, See console for details.');
-    });
-  });
-
-  document.getElementById('loginBtn').addEventListener('click', () => {
-    window.location.href = "login.html"; // Redirect to login page
-  });
-</script>
-
-
-
-
-
 </body>
-</html>
-
-
-<!-- App ends here -->
-  </div>
-
-  <!-- Maintenance Overlay -->
-  <div id="maintenanceOverlay" class="fixed inset-0 z-50 bg-gray-900 bg-opacity-90 backdrop-blur-sm flex items-center justify-center pointer-events-auto">
-    <div class="max-w-xl w-full bg-gray-800 p-8 rounded-2xl shadow-2xl text-center border border-gray-700 fade-in-up">
-      <svg class="w-16 h-16 mx-auto text-yellow-400 mb-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h14a2 2 0 012 2v11H3V5z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M2 17h20a1 1 0 011 1v1a2 2 0 01-2 2H3a2 2 0 01-2-2v-1a1 1 0 011-1z" />
-  <path stroke-linecap="round" stroke-linejoin="round" d="M10 9l-2 2 2 2M14 9l2 2-2 2" />
-        </svg>
-
-      <h1 class="text-3xl font-bold mb-4">Coming soon!</h1>
-      <p class="text-gray-300 text-lg mb-6">
-        <i>{Practise});) is currently under construction.</i><br/>
-       <i> Thank you for your patience.</i>
-      </p>
-      <div class="text-sm text-gray-500 mb-2">— <strong>{Practise});)</strong> Team</div>
-      <div class="text-xs text-gray-500">&copy; 2025-2026 | All rights reserved</div>
-    </div>
-  </div>
-    <!--script>
-  // Blur the app when overlay is shown
-  document.getElementById("mainApp").classList.add("blur-app");
-
-  // Auto-hide maintenance after 5 seconds
-  setTimeout(() => {
-    document.getElementById("maintenanceOverlay").classList.add("hidden");
-    document.getElementById("mainApp").classList.remove("blur-app");
-  }, 5000);
-</script-->
-
-  </body>
 </html>

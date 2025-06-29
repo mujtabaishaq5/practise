@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{Practise});) ELPL</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- CodeMirror -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/material-darker.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/clike/clike.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/edit/matchbrackets.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/addon/edit/closebrackets.min.js"></script>
+
+  <style>
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeInUp {
+      animation: fadeInUp 0.4s ease-out;
+    }
+
+    .CodeMirror {
+      height: 400px !important;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    .cm-keyword { color: #ff7eb6; font-weight: 600; }
+    .cm-comment { color: #6b7280; font-style: italic; }
+    .cm-number { color: #fca5a5; }
+    .cm-string { color: #34d399; }
+    .cm-variable { color: #facc15; }
+
+    #output::-webkit-scrollbar {
+      width: 8px;
+    }
+    #output::-webkit-scrollbar-thumb {
+      background: #4f46e5;
+      border-radius: 4px;
+    }
+    #output::-webkit-scrollbar-track {
+      background: #1f2937;
+    }
+  </style>
+</head>
+<body class="bg-gray-900 text-white flex flex-col min-h-screen">
+
+  <header class="text-center py-5 border-b border-gray-800">
+    <img src="elpllogo.png" alt="ELPL Logo" class="w-24 h-24 mx-auto" />
+    <h1 class="text-2xl font-bold text-indigo-400 mt-2">ELPL</h1>
+  </header>
+
+  <main class="flex flex-col items-center px-4 py-6 w-full max-w-6xl mx-auto space-y-6 flex-grow">
+
+    <!-- Buttons -->
+    <div class="flex gap-4 self-end">
+      <button onclick="runELPL()" class="bg-indigo-600 hover:bg-indigo-700 px-5 py-2 rounded-lg text-white font-semibold transition">
+        ▶️ Run <span class="text-xs opacity-70 ml-1">(Ctrl+Enter/ ⌘+Enter)</span>
+      </button>
+      <button onclick="downloadDoc()" class="bg-yellow-400 hover:bg-yellow-500 px-5 py-2 rounded-lg text-black font-semibold transition">
+        📘 Docs
+      </button>
+      <button onclick="downloadCode()" class="bg-yellow-400 hover:bg-yellow-500 px-5 py-2 rounded-lg text-black font-semibold transition">
+        📄 Sample Code
+      </button>
+    </div>
+
+    <!-- Editor -->
+    <section class="w-full bg-gray-800 rounded-lg shadow-lg border border-gray-700 overflow-hidden">
+      <textarea id="code" class="hidden">/ Write ELPL code
+let x be 2
+
+> if x is greater than 3
+then {
+  print "x is greater"}
+otherwise {
+  print "x is not greater"}<
+
+print "x is " x
+</textarea>
+    </section>
+
+    <!-- Output -->
+    <section class="w-full bg-black rounded-lg shadow-lg border border-gray-700 p-4">
+      <h2 class="text-lg font-semibold text-indigo-300 mb-2">🖥️ Output</h2>
+      <pre id="output" class="whitespace-pre-wrap overflow-auto text-green-400 font-mono text-base leading-relaxed max-h-80"></pre>
+    </section>
+  </main>
+
+  <footer class="text-center text-xs text-indigo-500 py-4 border-t border-gray-700">
+    &copy; 2025–2026 <strong>{Practise});)</strong>
+  </footer>
+
+  <!-- Modal -->
+  <div id="welcomeModal" class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+    <div class="bg-gray-800 rounded-2xl shadow-2xl p-8 max-w-md text-center border border-indigo-500 animate-fadeInUp">
+      <h2 class="text-2xl font-bold text-indigo-400 mb-4">👋 Welcome!</h2>
+      <p class="text-white mb-6">You're using <strong>my programming language</strong> ELPL</p>
+      <button onclick="closeModal()" class="bg-indigo-600 hover:bg-indigo-700 px-6 py-2 rounded text-white transition">
+        Let's Go
+      </button>
+    </div>
+  </div>
+
+  <!-- CodeMirror Init -->
+  <script>
+   CodeMirror.defineMode("elpl", function () {
+  const elplBuiltInFunctions = new Set([
+    "length", "sum", "max", "min", "sqrt", "pow", "floor","ceil", "reverse"
+    // Add other built-ins here
+  ]);
+
+  return {
+    token: function (stream, state) {
+      if (stream.eatSpace()) return null;
+
+      if (stream.match("/")) {
+        stream.skipToEnd();
+        return "comment";
+      }
+
+      if (stream.match(">")) {
+        state.inComment = true;
+        return "comment";
+      }
+
+      if (state.inComment) {
+        if (stream.match("<")) {
+          state.inComment = false;
+        } else {
+          stream.next();
+        }
+        return "comment";
+      }
+
+      if (stream.match(/"(?:[^"\\]|\\.)*"/)) return "string";
+
+      if (stream.match(/\b(let|be|if|then|otherwise|print|is|greater|function|call|while|than|repeat|times|and|or|float|Array|to|add|subtract|divide|multiply|not|equal|stop|return|for|less)\b/)) {
+        return "keyword";
+      }
+
+      if (stream.match(/^\d+/)) return "number";
+
+      // Variable or function name
+      const word = stream.match(/^[a-zA-Z_][a-zA-Z0-9_]*/);
+      if (word) {
+        return elplBuiltInFunctions.has(word[0]) ? "builtin" : "variable";
+      }
+
+      stream.next();
+      return null;
+    },
+
+    startState: function () {
+      return { inComment: false };
+    },
+  };
+});
+
+
+    const editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+      lineNumbers: true,
+      mode: "elpl",
+      theme: "material-darker",
+      matchBrackets: true,
+      autoCloseBrackets: true,
+      viewportMargin: Infinity
+    });
+
+    editor.on("keydown", (cm, event) => {
+      if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+        event.preventDefault();
+        runELPL();
+      }
+    });
+
+    async function runELPL() {
+      const output = document.getElementById('output');
+      output.textContent = 'Running...';
+      const code = editor.getValue();
+
+      try {
+        const res = await fetch("http://localhost:8080/api/run", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ program: code }),
+        });
+        const result = await res.text();
+        output.textContent = result;
+      } catch (err) {
+        output.textContent = "Server Error: " + err.message;
+      }
+    }
+
+    function downloadDoc() {
+      window.open('elpldocs.pdf', '_blank');
+    }
+
+    function downloadCode() {
+      window.open('sampleelpl.pdf', '_blank');
+    }
+
+    function showWelcomeModal() {
+      document.getElementById("welcomeModal").classList.remove("hidden");
+    }
+
+    function closeModal() {
+      document.getElementById("welcomeModal").classList.add("hidden");
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("welcome") === "true") {
+        showWelcomeModal();
+      }
+    });
+  </script>
+</body>
+</html>
